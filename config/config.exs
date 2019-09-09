@@ -7,11 +7,11 @@
 # General application configuration
 use Mix.Config
 
-config :responses,
+config :capture,
   ecto_repos: [Capture.Repo]
 
 # Configures the endpoint
-config :responses, CaptureWeb.Endpoint,
+config :capture, CaptureWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "KPZTE3kasos3VSe5LQ7TMxOIeX52k18lV/Bvo+C3O6lRl1oKougGUQkc2mw65c8Z",
   render_errors: [view: CaptureWeb.ErrorView, accepts: ~w(json)],

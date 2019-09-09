@@ -1,4 +1,4 @@
-# Responses
+# Capture
 
 To start your Phoenix server:
 
