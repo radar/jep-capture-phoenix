@@ -68,4 +68,30 @@ defmodule Capture.Surveys do
     )
     |> Repo.one
   end
+
+  # responses = A pre-built query
+  # OR
+  # responses = the `Response` struct
+  def filter_responses(responses, params) do
+    responses
+    |> filter_responses_query(params)
+    |> Repo.all
+  end
+
+  def filter_responses_query(responses, %{"survey_id" => survey_id, "question_id" => question_id, "demographic_ids" => demographic_ids} = params) do
+    responses
+    |> filter_responswes_query(params |> Map.take(["survey_id", "question_id"]))
+
+  end
+
+  def filter_responses_query(responses, %{"survey_id" => survey_id, "question_id" => question_id}) do
+    responses
+    |> filter_responses_query(%{"survey_id" => survey_id})
+    |> where(question_id: ^question_id)
+  end
+
+  def filter_responses_query(responses, %{"survey_id" => survey_id}) do
+    responses
+    |> where(survey_id: ^survey_id)
+  end
 end
